@@ -18,10 +18,7 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
     'alt.badgeIndex': 'סמל דירוג במדד ההתחדשות העירונית 2025, עשר שנים',
     'alt.badgeDuns': 'סמל Dun’s 100 2026, The Standard of Achievement',
     'alt.badgeCoface': 'סמל איתנות עסקית CofaceBDI 2026',
-
-    'cover.eyebrow': 'רינובו',
     'cover.h1': 'קבוצת רינובו',
-    'cover.lead': 'קבוצה יזמית ומבצעת מובילה בהתחדשות עירונית',
 
     'who.eyebrow': 'נעים להכיר',
     'who.h': 'חלוצה בהתחדשות עירונית מאז 2008',
@@ -116,10 +113,7 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
     'alt.badgeIndex': 'Urban Renewal Index 2025 badge, ten years',
     'alt.badgeDuns': 'Dun’s 100 2026 badge, The Standard of Achievement',
     'alt.badgeCoface': 'CofaceBDI 2026 business stability badge',
-
-    'cover.eyebrow': 'Investor Presentation',
     'cover.h1': 'Renovo Group',
-    'cover.lead': 'A leading developer and builder in urban renewal',
 
     'who.eyebrow': 'Who we are',
     'who.h': 'Urban renewal pioneers since 2008',

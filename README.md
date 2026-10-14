@@ -1,4 +1,4 @@
-# Renovo — Investor Presentation (Next.js)
+# Renovo — Company Presentation (Next.js)
 
 One-page, slide-by-slide presentation. Next.js (App Router, TypeScript), GSAP + ScrollTrigger, Hebrew/RTL default with EN/LTR toggle.
 

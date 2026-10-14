@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Renovo — Investor Presentation',
-  description: 'Renovo Group — urban renewal developer and builder. Investor presentation.',
+  title: 'Renovo',
+  description: 'Renovo Group — urban renewal developer and builder. HOMES INSPIRED BY YOU.',
 };
 export const viewport: Viewport = { themeColor: '#0a0a0a', viewportFit: 'cover', width: 'device-width', initialScale: 1 };
 
