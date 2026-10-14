@@ -63,7 +63,7 @@ export default function Deck() {
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = rtl ? 'rtl' : 'ltr';
-    document.title = rtl ? 'רינובו — מצגת משקיעים' : 'Renovo — Investor Presentation';
+    document.title = rtl ? 'רינובו' : 'Renovo';
     try { localStorage.setItem('renovo-lang', lang); } catch {}
   }, [lang, rtl]);
 

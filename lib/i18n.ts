@@ -22,7 +22,7 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
     'alt.badgeDuns': 'סמל Dun’s 100 2026, The Standard of Achievement',
     'alt.badgeCoface': 'סמל איתנות עסקית CofaceBDI 2026',
 
-    'cover.eyebrow': 'מצגת משקיעים',
+    'cover.eyebrow': 'רינובו',
     'cover.h1': 'קבוצת רינובו',
     'cover.lead': 'קבוצה יזמית ומבצעת מובילה בהתחדשות עירונית',
 
