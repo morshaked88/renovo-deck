@@ -44,8 +44,6 @@ function Photo({ src, w, h, alt, priority, still }: { src: string; w: number; h:
 export default function Deck() {
   const [lang, setLang] = useState<Lang>('he');
   const [current, setCurrent] = useState(0);
-  const [fs, setFs] = useState(false);
-  const [fsOK, setFsOK] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLElement>(null);
   const ctxRef = useRef<gsap.Context | null>(null);
@@ -58,7 +56,6 @@ export default function Deck() {
   /* language: restore + persist */
   useEffect(() => {
     try { if (localStorage.getItem('renovo-lang') === 'en') setLang('en'); } catch {}
-    setFsOK(!!document.fullscreenEnabled);
   }, []);
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -157,13 +154,7 @@ export default function Deck() {
     const n = Math.max(0, Math.min(slides.length - 1, i));
     slides[n].scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   }, []);
-  const toggleFs = useCallback(() => {
-    if (!document.fullscreenEnabled) return;
-    if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {});
-  }, []);
   useEffect(() => {
-    const onFs = () => setFs(!!document.fullscreenElement);
-    document.addEventListener('fullscreenchange', onFs);
     const onKey = (e: KeyboardEvent) => {
       if (e.altKey || e.ctrlKey || e.metaKey) return;
       const tag = (e.target as HTMLElement).tagName.toLowerCase();
@@ -173,13 +164,12 @@ export default function Deck() {
       else if (k === 'ArrowUp' || k === 'PageUp' || k === prevH || (k === ' ' && e.shiftKey)) d = -1;
       else if (k === 'Home') { e.preventDefault(); return goTo(0); }
       else if (k === 'End') { e.preventDefault(); return goTo(NAV.length - 1); }
-      else if (k === 'f' || k === 'F') return toggleFs();
       else return;
       e.preventDefault(); goTo(curRef.current + d);
     };
     window.addEventListener('keydown', onKey);
-    return () => { document.removeEventListener('fullscreenchange', onFs); window.removeEventListener('keydown', onKey); };
-  }, [rtl, goTo, toggleFs]);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [rtl, goTo]);
 
   const pad = (n: number) => (n < 10 ? '0' : '') + n;
   const img = (src: string) => `/assets/${src}`;
@@ -194,7 +184,6 @@ export default function Deck() {
           <Image className="lg-d" src={img('logo-dark.png')} width={714} height={401} alt="" />
         </a>
         <div className="hdr-tools">
-          {fsOK && <button className="btn-ghost" type="button" onClick={toggleFs} aria-label={fs ? t('ui.presentExit') : t('ui.presentAria')}>{fs ? t('ui.presentExit') : t('ui.present')}</button>}
           <button className="lang" type="button" role="switch" aria-checked={lang === 'en'} aria-label={t('ui.langAria')} onClick={() => setLang(rtl ? 'en' : 'he')}>
             <span className="lang-opt" data-l="he">HE</span><span className="lang-opt" data-l="en">EN</span>
           </button>

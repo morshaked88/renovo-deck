@@ -2,9 +2,6 @@
 export const I18N: Record<"he"|"en", Record<string,string>> = {
   he: {
     'ui.skip': 'דלג לתוכן',
-    'ui.present': 'מצב מצגת',
-    'ui.presentAria': 'מעבר למסך מלא',
-    'ui.presentExit': 'יציאה ממסך מלא',
     'ui.langAria': 'החלף שפה לאנגלית',
     'ui.slide': 'שקופית',
     'nav.s1': 'פתיחה', 'nav.s2': 'נעים להכיר', 'nav.s3': 'הנהלה', 'nav.s4': 'המודל שלנו',
@@ -103,9 +100,6 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
   },
   en: {
     'ui.skip': 'Skip to content',
-    'ui.present': 'Present',
-    'ui.presentAria': 'Enter fullscreen',
-    'ui.presentExit': 'Exit fullscreen',
     'ui.langAria': 'Switch language to Hebrew',
     'ui.slide': 'Slide',
     'nav.s1': 'Cover', 'nav.s2': 'Who we are', 'nav.s3': 'Management', 'nav.s4': 'Our model',
