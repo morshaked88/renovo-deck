@@ -46,9 +46,9 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
     'arms.h': 'שתי זרועות. כתובת אחת. אחריות מלאה.',
     'arms.sub': 'מהחוזה הראשון ועד מסירת המפתח – הכול בבית אחד.',
     'arms.a1h': 'הזרוע היזמית', 'arms.a1s': 'קבוצת רינובו',
-    'arms.a1l1': 'ייזום ופיתוח פרויקטים', 'arms.a1l2': 'תכנון, רישוי והשבחה', 'arms.a1l3': 'ניהול וליווי בעלי הדירות',
+    'arms.a1l1': 'ייזום ופיתוח פרויקטים', 'arms.a1l2': 'תכנון, רישוי והשבחה', 'arms.a1l3': 'ניהול וליווי בעלי הדירות', 'arms.a1l4': 'מסירה, בדק ושירות לאחר אכלוס',
     'arms.a2h': 'הזרוע המבצעת', 'arms.a2s': 'י.מ. פרז חברה לבנין בע״מ',
-    'arms.a2l1': 'הקבלן של הקבוצה', 'arms.a2l2': 'ביצוע, בקרת איכות ולוחות זמנים', 'arms.a2l3': 'מסירה, בדק ושירות לאחר אכלוס',
+    'arms.a2l1': 'קבלן הקבוצה', 'arms.a2l2': 'ביצוע, בקרת איכות ולוחות זמנים',
 
     'num.eyebrow': 'הישגים במספרים',
     'num.h': 'מהבטחה לביצוע בהרצליה',
@@ -88,7 +88,7 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
     'hero.u.h': 'מתחם U הרצליה הירוקה – המערבית',
     'hero.u.c1': 'הנדיב 53', 'hero.u.c2': 'הנדיב 55', 'hero.u.c3': 'הנדיב 57', 'hero.u.c4': 'הנדיב 59', 'hero.u.c5': 'נחמיה', 'hero.u.c6': 'עזרא הסופר',
     'hero.b.h': 'ביאליק 360, רמת השרון',
-    'hero.h.h': 'הדר 40-42, 46-48, הרצליה',
+    'hero.h.h': 'הדר 40,42,46-48 הרצליה',
 
     'team.eyebrow': 'נעים להכיר',
     'team.h': 'הנהלת הקבוצה',
@@ -147,9 +147,9 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
     'arms.h': 'Two arms. One address. Full responsibility.',
     'arms.sub': 'From the first contract to the handover of keys — all under one roof.',
     'arms.a1h': 'The development arm', 'arms.a1s': 'Renovo Group',
-    'arms.a1l1': 'Project initiation and development', 'arms.a1l2': 'Planning, licensing and value enhancement', 'arms.a1l3': 'Managing and supporting apartment owners',
+    'arms.a1l1': 'Project initiation and development', 'arms.a1l2': 'Planning, licensing and value enhancement', 'arms.a1l3': 'Managing and supporting apartment owners', 'arms.a1l4': 'Handover, inspection and post-occupancy service',
     'arms.a2h': 'The execution arm', 'arms.a2s': 'Y.M. Peretz Construction Ltd.',
-    'arms.a2l1': 'The group’s contractor', 'arms.a2l2': 'Execution, quality control and schedules', 'arms.a2l3': 'Handover, inspection and post-occupancy service',
+    'arms.a2l1': 'The group’s contractor', 'arms.a2l2': 'Execution, quality control and schedules',
 
     'num.eyebrow': 'Achievements in numbers',
     'num.h': 'From Promise to Execution in Herzliya',
@@ -189,7 +189,7 @@ export const I18N: Record<"he"|"en", Record<string,string>> = {
     'hero.u.h': 'Herzliya Green U Complex – West',
     'hero.u.c1': 'Hanadiv 53', 'hero.u.c2': 'Hanadiv 55', 'hero.u.c3': 'Hanadiv 57', 'hero.u.c4': 'Hanadiv 59', 'hero.u.c5': 'Nehemia', 'hero.u.c6': 'Ezra HaSofer',
     'hero.b.h': 'Bialik 360, Ramat HaSharon',
-    'hero.h.h': 'Hadar 40–42, 46–48, Herzliya',
+    'hero.h.h': 'Hadar 40, 42, 46–48, Herzliya',
 
     'team.eyebrow': 'Meet the team',
     'team.h': 'Group management',

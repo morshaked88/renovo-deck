@@ -96,7 +96,9 @@ export default function Deck() {
       if (reduce) return;
 
       slides.forEach((sl) => {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, scrollTrigger: { trigger: sl, start: 'top 62%', toggleActions: 'play none none none' } }); // no `once`: self-killing triggers corrupt ScrollTrigger's refresh loop when built while scrolled
+        // Replays every time the slide is entered (from above or below). Triggers are created explicitly
+        // (never `once`, which self-kills and corrupts ScrollTrigger's refresh loop when built while scrolled).
+        const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
         const words = sl.querySelectorAll('.split .w > span');
         const rv = sl.querySelectorAll('.rv');
         const up = sl.querySelectorAll('.rv-up');
@@ -106,9 +108,11 @@ export default function Deck() {
         sl.querySelectorAll('.reveal-img').forEach((el) => {
           tl.from(el, { clipPath: X > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)', duration: 1.4, ease: 'power4.inOut', clearProps: 'clipPath' }, 0.05);
         });
+        const zeroCounters: Array<() => void> = [];
         sl.querySelectorAll<HTMLElement>('[data-count]').forEach((el, i) => {
           const end = +el.dataset.count!, plain = el.hasAttribute('data-plain'), o = { v: plain ? end - 40 : 0 };
           el.textContent = plain ? String(Math.round(o.v)) : nf.format(0);
+          zeroCounters.push(() => { el.textContent = plain ? String(end - 40) : nf.format(0); });
           tl.to(o, { v: end, duration: 1.8, ease: 'power2.out', onUpdate: () => { el.textContent = plain ? String(Math.round(o.v)) : nf.format(Math.round(o.v)); } }, 0.3 + i * 0.1);
         });
         sl.querySelectorAll('.bar i').forEach((b, i) => tl.from(b, { scaleX: 0, duration: 1.3, ease: 'power3.inOut' }, 0.5 + i * 0.18));
@@ -117,6 +121,9 @@ export default function Deck() {
           tl.from(line, vert ? { scaleY: 0, duration: 2.4, ease: 'power2.inOut' } : { scaleX: 0, duration: 2.4, ease: 'power2.inOut' }, 0.2);
           tl.from(sl.querySelectorAll('.tl-node'), { autoAlpha: 0, y: 24, duration: 0.8, stagger: 0.46, clearProps: 'transform,opacity,visibility' }, 0.35);
         }
+        ScrollTrigger.create({ trigger: sl, start: 'top 62%', end: 'bottom 38%', onEnter: () => { zeroCounters.forEach((z) => z()); tl.restart(); }, onEnterBack: () => { zeroCounters.forEach((z) => z()); tl.restart(); } });
+        // back to the hidden start state only once the slide is completely out of view
+        ScrollTrigger.create({ trigger: sl, start: 'top bottom', end: 'bottom top', onLeave: () => { tl.pause(0); zeroCounters.forEach((z) => z()); }, onLeaveBack: () => { tl.pause(0); zeroCounters.forEach((z) => z()); } });
         const img = sl.querySelector('.ph:not(.still) img');
         if (img) gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: sl, start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
       });
@@ -227,8 +234,11 @@ export default function Deck() {
                 <div className="rv-up"><dt>{t('who.s3l')}</dt><dd><Count value={590} /></dd></div>
               </dl>
             </div>
-            <figure className="media-full reveal-img">
-              <Image src={img('u-complex.jpg')} width={1920} height={1080} sizes="(max-width:900px) 100vw, 60vw" alt={t('alt.aerialU2')} quality={85} />
+            <figure className="who-fig">
+              <div className="media-full reveal-img">
+                <Image src={img('p09-aerial.jpg')} width={2458} height={1844} sizes="(max-width:900px) 100vw, 60vw" alt={t('alt.aerialU')} quality={85} />
+              </div>
+              <figcaption className="rv">{t('hero.u.h')}</figcaption>
             </figure>
           </div>
         </section>
@@ -280,7 +290,7 @@ export default function Deck() {
               {(['a1', 'a2'] as const).map((a) => (
                 <article className="arm rv-up" key={a}>
                   <header><h3>{t(`arms.${a}h`)}</h3><p>{t(`arms.${a}s`)}</p></header>
-                  <ul>{[1, 2, 3].map((n) => <li key={n}>{t(`arms.${a}l${n}`)}</li>)}</ul>
+                  <ul>{(a === 'a1' ? [1, 2, 3, 4] : [1, 2]).map((n) => <li key={n}>{t(`arms.${a}l${n}`)}</li>)}</ul>
                 </article>
               ))}
             </div>
@@ -305,7 +315,9 @@ export default function Deck() {
               <article className="arm rv-up">
                 <header><h3>{t('ach.a2h')}</h3><p>{t('ach.a2s')}</p></header>
                 <div className="facts">
-                  <div><Image className="cert" src={img('cert-g5.jpg')} width={862} height={1055} alt={t('alt.cert')} quality={90} /><b>{t('ach.f1h')}</b><small>{t('ach.f1p')}</small></div>
+                  <div><Image className="cert" src={img('cert-g5.jpg')} width={862} height={1055} alt={t('alt.cert')} quality={90} /><span className="stars" role="img" aria-label={t('ach.f1h')}>{[0, 1, 2, 3, 4].map((i) => (
+                    <svg key={i} viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M12 1.8l3.06 6.55 7.14.86-5.27 4.9 1.4 7.07L12 17.6l-6.33 3.58 1.4-7.07-5.27-4.9 7.14-.86L12 1.8z" /></svg>
+                  ))}</span><small>{t('ach.f1p')}</small></div>
                   <div><Html className="num big2 big2-sm" k="ach.f2n" t={t} /><b>{t('ach.f2h')}</b><small>{t('ach.f2p')}</small></div>
                 </div>
               </article>
@@ -338,9 +350,6 @@ export default function Deck() {
         <section className="slide dark map-slide" id="s8" data-theme="dark">
           <div className="wrap wrap-wide">
             <Split k="map.h" t={t} lang={lang} />
-            <figure className="map-frame reveal-img">
-              <Image src={img('u-complex.jpg')} width={1920} height={1080} sizes="100vw" alt={t('alt.aerialU2')} quality={85} />
-            </figure>
           </div>
         </section>
 
@@ -351,6 +360,7 @@ export default function Deck() {
             <p className="eyebrow rv">{t('hero.eyebrow')}</p>
             <Split k="hero.u.h" t={t} lang={lang} />
           </div>
+          <p className="disclaimer">{t('hero.note')}</p>
         </section>
 
         {/* 10 HERO BIALIK */}
@@ -359,8 +369,8 @@ export default function Deck() {
           <div className="wrap hero-in">
             <p className="eyebrow rv">{t('hero.eyebrow')}</p>
             <Split k="hero.b.h" t={t} lang={lang} />
-            <p className="note rv">{t('hero.note')}</p>
           </div>
+          <p className="disclaimer">{t('hero.note')}</p>
         </section>
 
         {/* 11 HERO HADAR */}
@@ -377,7 +387,6 @@ export default function Deck() {
           <div className="wrap cover-in">
             <Image className="cover-logo rv" src={img('logo-dark.png')} width={714} height={401} alt={t('alt.logo')} />
             <p className="tagline rv">HOMES INSPIRED BY YOU</p>
-            <Split k="end.h" t={t} lang={lang} />
             <a className="btn" href="https://www.renovo.co.il/" target="_blank" rel="noopener noreferrer">
               <span>{t('end.cta')}</span>
               <svg className="arrow" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
