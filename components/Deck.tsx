@@ -9,8 +9,8 @@ import { I18N, type Lang } from '@/lib/i18n';
 gsap.registerPlugin(ScrollTrigger);
 
 type T = (k: string) => string;
-const NAV = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12'];
-const THEMES = ['light', 'light', 'light', 'light', 'light', 'light', 'dark', 'dark', 'dark', 'dark', 'dark', 'light'];
+const NAV = ['s1', 's2', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12'];
+const THEMES = ['light', 'light', 'light', 'light', 'light', 'dark', 'dark', 'dark', 'dark', 'dark', 'light'];
 
 /* ---------- small building blocks ---------- */
 function Split({ k, t, lang, className = 'h' }: { k?: string; t: T; lang: Lang; className?: string }) {
@@ -220,7 +220,7 @@ export default function Deck() {
               <dl className="stats3">
                 <div className="rv-up"><dt>{t('who.s1l')}</dt><dd><Count value={2008} plain /></dd></div>
                 <div className="rv-up"><dt>{t('who.s2l')}</dt><dd><span className="num">#1</span></dd></div>
-                <div className="rv-up"><dt>{t('who.s3l')}</dt><dd><Count value={590} /></dd></div>
+                <div className="rv-up"><dt>{t('who.s3l')}</dt><dd><Count value={26} /></dd></div>
               </dl>
             </div>
             <figure className="who-fig">
@@ -229,22 +229,6 @@ export default function Deck() {
               </div>
               <figcaption className="rv">{t('hero.u.h')}</figcaption>
             </figure>
-          </div>
-        </section>
-
-        {/* 3 TEAM */}
-        <section className="slide light" id="s3" data-theme="light">
-          <div className="wrap">
-            <p className="eyebrow rv">{t('team.eyebrow')}</p>
-            <Split k="team.h" t={t} lang={lang} />
-            <ul className="team">
-              {([[5, 246], [4, 250], [3, 244], [2, 221], [1, 203]] as const).map(([n, w]) => (
-                <li className="rv-up" key={n}>
-                  <Image src={img(`team-${n}.webp`)} width={w} height={268} alt={t(`team.a${n}`)} />
-                  <b>{t(`team.n${n}`)}</b><span>{t(`team.r${n}`)}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
@@ -322,7 +306,7 @@ export default function Deck() {
             <Split k="num.h" t={t} lang={lang} />
             <div className="num-grid">
               <div className="big rv"><Count value={1051} className="num xl" /><span className="cap">{t('num.total')}</span></div>
-              <div className="big rv"><Count value={25} className="num xl" /><span className="cap">{t('num.projects')}</span></div>
+              <div className="big rv"><Count value={26} className="num xl" /><span className="cap">{t('num.projects')}</span></div>
             </div>
             <div className="bar" role="img" aria-label={t('num.barAria')}>
               <i className="b1" style={{ flexBasis: '56.1%' }} /><i className="b2" style={{ flexBasis: '25.2%' }} /><i className="b3" style={{ flexBasis: '18.7%' }} />

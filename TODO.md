@@ -13,7 +13,7 @@ Nothing below was invented; each item needs your input before it can be added to
 
 ## Ambiguities to confirm
 - Projects map (slide 8): the PDF carries the author note "verify it is up to date per the website". The legend in the source image is cropped (black = in marketing, white = occupied, blue = unlabeled, presumably under construction). The map is shown as supplied; its labels are Hebrew-only.
-- "25 projects" vs. the map pins: confirm the project list.
+- Project count: slides 2 and 7 now say **26 occupied projects** (per client edit); the PDF itself says "25 projects" in total. Confirm the figure and whether it means occupied-only or all projects.
 - Group-structure graphic in the PDF mentions "urban renewal nationwide"; elsewhere the PDF says "central region and Herzliya". The nationwide bullet was omitted.
 - "10 consecutive years, top of national indices and #1 in Herzliya": the PDF sentence is ambiguous on which claim the ten years apply to; the 2016 milestone is derived from the 2016–2025 ranking years on the achievements graphic.
 - Executing arm legal name: "י.מ. פרז חברה לבנין בע״מ"; English rendering "Y.M. Peretz Construction Ltd." and team-member transliterations (Assayag, Bitan, Wolman, Peretz) need confirming. The executing arm's logo was not extractable as a separate file.
